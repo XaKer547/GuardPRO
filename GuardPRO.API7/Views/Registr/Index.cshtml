@@ -4,19 +4,37 @@
     ViewData["Title"] = "Регистрация";
 }
 
-@if (!Model.IsSessuful) {
+@using (Html.BeginForm())
+{
     <div>
-        <span>@Model.ErrorMessage</span>
+        @Html.LabelFor(model => model.UserEmail)
+        @Html.EditorFor(model => model.UserEmail)
+        @Html.ValidationMessageFor(model => model.UserEmail)
     </div>
+    
+    <div>
+        @Html.LabelFor(model => model.UserLogin)
+        @Html.EditorFor(model => model.UserLogin)
+        @Html.ValidationMessageFor(model => model.UserLogin)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.UserBird)
+        @Html.EditorFor(model => model.UserBird)
+        @Html.ValidationMessageFor(model => model.UserBird)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.UserName)
+        @Html.EditorFor(model => model.UserName)
+        @Html.ValidationMessageFor(model => model.UserName)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.UserPassword)
+        @Html.EditorFor(model => model.UserPassword)
+        @Html.ValidationMessageFor(model => model.UserPassword)
+    </div>
+    
+    <button>Зарегистрироватся</button>
 }
-
-
-<form action="~/Registr" method="POST" enctype="multipart/form-data">
-    <label>Email: <input name="UserEmail" type="email" /></label><br />
-    <label>Логин: <input name="UserLogin" type="text" /></label><br />
-    <label>Пароль: <input name="UserPassword" type="text" /></label><br />
-    <label>Дата рождения: <input name="UserBird" type="date" /></label><br />
-    <label>Имя: <input name="UserName" type="text" /></label><br />
-    <input type="submit" value="Зарегистрироватся" />
-</form>
-
