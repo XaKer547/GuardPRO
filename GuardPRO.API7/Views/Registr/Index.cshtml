@@ -1,0 +1,22 @@
+﻿@model GuardPRO.API7.Controllers.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+@if (!Model.IsSessuful) {
+    <div>
+        <span>@Model.ErrorMessage</span>
+    </div>
+}
+
+
+<form action="~/Registr" method="POST" enctype="multipart/form-data">
+    <label>Email: <input name="UserEmail" type="email" /></label><br />
+    <label>Логин: <input name="UserLogin" type="text" /></label><br />
+    <label>Пароль: <input name="UserPassword" type="text" /></label><br />
+    <label>Дата рождения: <input name="UserBird" type="date" /></label><br />
+    <label>Имя: <input name="UserName" type="text" /></label><br />
+    <input type="submit" value="Зарегистрироватся" />
+</form>
+

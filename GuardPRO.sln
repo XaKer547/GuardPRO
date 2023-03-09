@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuardPRO.API", "GuardPRO.API\GuardPRO.API.csproj", "{DDAFBC59-DFAB-40F2-A572-AD3E8B08D887}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardPRO.API", "GuardPRO.API\GuardPRO.API.csproj", "{DDAFBC59-DFAB-40F2-A572-AD3E8B08D887}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardPRO.API7", "GuardPRO.API7\GuardPRO.API7.csproj", "{1EF616BC-823D-49AD-9C5D-823497940313}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{A7C0573D-7C14-4014-A03D-5716A772296A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{DDAFBC59-DFAB-40F2-A572-AD3E8B08D887}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDAFBC59-DFAB-40F2-A572-AD3E8B08D887}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDAFBC59-DFAB-40F2-A572-AD3E8B08D887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EF616BC-823D-49AD-9C5D-823497940313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EF616BC-823D-49AD-9C5D-823497940313}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EF616BC-823D-49AD-9C5D-823497940313}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EF616BC-823D-49AD-9C5D-823497940313}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7C0573D-7C14-4014-A03D-5716A772296A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C0573D-7C14-4014-A03D-5716A772296A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C0573D-7C14-4014-A03D-5716A772296A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C0573D-7C14-4014-A03D-5716A772296A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<GuardPRO.API7.Database.Models.Invite>
+
+@{
+    ViewData["Title"] = "Приглашения";
+}
+
+<table>
+@foreach (var x in Model) {
+    <tr>
+        <td>@x.Date</td>
+        <td>@x.User.Login</td>
+    </tr>
+}
+</table>
