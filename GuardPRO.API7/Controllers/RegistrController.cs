@@ -27,7 +27,7 @@ public class RegistrController : Controller
 
     public IActionResult Index()
     {
-        return View(new RegisterViewModel { IsSessuful = tru});
+        return View(new RegisterViewModel { IsSessuful = true});
     }
 
     [HttpPost]
@@ -56,7 +56,7 @@ public class RegistrController : Controller
 
         await _context.SaveChangesAsync();
 
-        return View(new RegisterViewModel { IsSessuful = true });
+        return RedirectToAction(nameof(LoginController.Index), nameof(LoginController));
     }
 }
 

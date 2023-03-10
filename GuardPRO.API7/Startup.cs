@@ -1,4 +1,5 @@
 using GuardPRO.API7.Database;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,11 @@ namespace GuardPRO.API7
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Login";
+                });
             services.AddControllersWithViews();
             services.AddDbContext<GuardDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("default")));
         }
@@ -34,7 +40,9 @@ namespace GuardPRO.API7
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {
