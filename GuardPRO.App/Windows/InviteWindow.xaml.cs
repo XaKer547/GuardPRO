@@ -70,7 +70,7 @@ namespace GuardPRO.App.Windows
                 _invitesQuery = _invitesQuery.Where(x => x.Group == null);
 
             if (PorazdelCaomboBox.SelectedItem != null)
-                _invitesQuery = _invitesQuery.Where(x => x.Group?.Id == ((Group)PorazdelCaomboBox.SelectedItem).Id);
+                _invitesQuery = _invitesQuery.Where(x => x.Applicant.Department.Id == ((Department)PorazdelCaomboBox.SelectedItem).Id);
 
             if (!string.IsNullOrEmpty(SernameTextBox.Text))
                 _invitesQuery = _invitesQuery
