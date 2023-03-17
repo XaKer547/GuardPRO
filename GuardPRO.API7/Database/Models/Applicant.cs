@@ -1,4 +1,6 @@
-﻿namespace GuardPRO.API7.Database.Models;
+﻿using System.Collections.Generic;
+
+namespace GuardPRO.API7.Database.Models;
 
 public class Applicant
 {
@@ -9,4 +11,6 @@ public class Applicant
     public Department Department { get; set; }
     public Otdel Otdel { get; set; }
     public int Number { get; set; }
+
+    public List<Invite> Invites { get; set; }
 }

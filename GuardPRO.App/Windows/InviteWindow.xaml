@@ -1,0 +1,91 @@
+﻿<Window x:Class="GuardPRO.App.Windows.InviteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GuardPRO.App.Windows"
+        mc:Ignorable="d"
+        MinHeight="450"
+        MinWidth="800"
+        Height="450"
+        Width="800"
+        Loaded="Window_Loaded"
+        Title="Заявки">
+    <Window.Resources>
+        <local:StatusConverter x:Key="StatusConverter" />
+    </Window.Resources>
+    <Grid>
+        
+        
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock Text="Дата" />
+            <DatePicker x:Name="DateFilterDatePicker" />
+
+            <TextBlock Text="Тип" />
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="GroupRadioButton" GroupName="Type" Content="Груповая" />
+                <RadioButton x:Name="IndivdRadioButton" GroupName="Type" Content="Индивидуальная" />
+            </StackPanel>
+
+            <TextBlock Text="Подразделение" />
+            <ComboBox x:Name="PorazdelCaomboBox" DisplayMemberPath="Name" />
+
+            <Button Content="Найти" Click="SearchButton_Click" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Фамилия" />
+            <TextBox x:Name="SernameTextBox" />
+
+            <TextBlock Text="Имя" />
+            <TextBox x:Name="NameTextBox" />
+
+            <TextBlock Text="Отчество" />
+            <TextBox  x:Name="PatronicTextBox" />
+
+            <TextBlock Text="Паспорт" />
+            <TextBox x:Name="PassportTextBox" />
+        </StackPanel>
+
+        <DataGrid Grid.Row="1"
+                  Grid.ColumnSpan="2"
+                  x:Name="InviteDataGrid"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Дата заявки"
+                                    Binding="{Binding Date, StringFormat=dd.MM.yyyy}" />
+                <DataGridTextColumn Header="Статус"
+                                    Binding="{Binding Status, Converter={StaticResource StatusConverter}}" />
+                <DataGridTextColumn Header="Причина отказа"
+                                    Binding="{Binding ReasonDeny}" />
+                <DataGridTextColumn Header="Фамилия"
+                                    Binding="{Binding User.Sername}" />
+                <DataGridTextColumn Header="Имя"
+                                    Binding="{Binding User.Name}" />
+                <DataGridTextColumn Header="Сотрудник"
+                                    Binding="{Binding Applicant.Sername}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock x:Name="LoadingTextBlock"
+                   Visibility="Collapsed"
+                   Grid.RowSpan="2"
+                   Grid.ColumnSpan="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="32">
+            Загрузка данных...
+        </TextBlock>
+    </Grid>
+</Window>
