@@ -13,6 +13,8 @@ public class Invite
     public StatusInvite? Status { get; set; }
     public string? ReasonDeny { get; set; }
 
+    public TimeSpan? TimeOut { get; set; }
+
     public int UserId { get; set; }
     public User User { get; set; }
 

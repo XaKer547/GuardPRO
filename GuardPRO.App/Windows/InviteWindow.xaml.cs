@@ -1,13 +1,10 @@
 ﻿using GuardPRO.API7.Database.Models;
-using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -16,31 +13,6 @@ using System.Windows.Shapes;
 
 namespace GuardPRO.App.Windows
 {
-
-    public class StatusConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            var status = (StatusInvite)value;
-
-            switch (status)
-            {
-                case StatusInvite.CHECKING:
-                    return "Проверка";
-                case StatusInvite.ACCEPT:
-                    return "Принята";
-                case StatusInvite.DENY:
-                    return "Отказ";
-                default:
-                    return "";
-            }
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
 
     /// <summary>
     /// Логика взаимодействия для InviteWindow.xaml
@@ -79,7 +51,10 @@ namespace GuardPRO.App.Windows
             InviteDataGrid.ItemsSource = _invitesQuery.ToList();
         }
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e) => 
+            await Load();
+
+        private async Task Load()
         {
             LoadingTextBlock.Visibility = Visibility.Visible;
 
@@ -94,6 +69,34 @@ namespace GuardPRO.App.Windows
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             ShowDataInvite();
+        }
+
+        private async void AcceptButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selInvite = InviteDataGrid.SelectedItem;
+            if (selInvite == null)
+            {
+                MessageBox.Show("Выберите приглашение");
+                return;
+            }
+
+            var acceptInviteWindow = new AcceptInviteWindow((Invite)selInvite);
+            if (acceptInviteWindow.ShowDialog() == true)
+                await Load();
+        }
+
+        private async void TimeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selInvite = InviteDataGrid.SelectedItem;
+            if (selInvite == null)
+            {
+                MessageBox.Show("Выберите приглашение");
+                return;
+            }
+
+            var acceptInviteWindow = new TimeInviteWindow((Invite)selInvite);
+            if (acceptInviteWindow.ShowDialog() == true)
+                await Load();
         }
     }
 }

@@ -12,12 +12,8 @@
         Loaded="Window_Loaded"
         Title="Заявки">
     <Window.Resources>
-        <local:StatusConverter x:Key="StatusConverter" />
     </Window.Resources>
     <Grid>
-        
-        
-        
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -26,6 +22,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <StackPanel>
@@ -34,14 +31,20 @@
 
             <TextBlock Text="Тип" />
             <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="GroupRadioButton" GroupName="Type" Content="Груповая" />
-                <RadioButton x:Name="IndivdRadioButton" GroupName="Type" Content="Индивидуальная" />
+                <RadioButton x:Name="GroupRadioButton"
+                             GroupName="Type"
+                             Content="Груповая" />
+                <RadioButton x:Name="IndivdRadioButton"
+                             GroupName="Type"
+                             Content="Индивидуальная" />
             </StackPanel>
 
             <TextBlock Text="Подразделение" />
-            <ComboBox x:Name="PorazdelCaomboBox" DisplayMemberPath="Name" />
+            <ComboBox x:Name="PorazdelCaomboBox"
+                      DisplayMemberPath="Name" />
 
-            <Button Content="Найти" Click="SearchButton_Click" />
+            <Button Content="Найти"
+                    Click="SearchButton_Click" />
         </StackPanel>
 
         <StackPanel Grid.Column="1">
@@ -75,8 +78,23 @@
                                     Binding="{Binding User.Name}" />
                 <DataGridTextColumn Header="Сотрудник"
                                     Binding="{Binding Applicant.Sername}" />
+                <DataGridTextColumn Header="Время выхода"
+                                    Binding="{Binding TimeOut}" />
             </DataGrid.Columns>
         </DataGrid>
+
+        <StackPanel Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button Padding="10 2"
+                    Click="TimeButton_Click"
+                    Content="Время убытия" />
+            
+            <Button Padding="10 2"
+                    Click="AcceptButton_Click"
+                    Content="Разрешить доступ" />
+        </StackPanel>
 
         <TextBlock x:Name="LoadingTextBlock"
                    Visibility="Collapsed"
