@@ -39,8 +39,7 @@ namespace SF2022User01Lib
                 }s
             }
 
-            string format = @"hh\:mm";
-            return allTimeSpanes.Select(x => $"{x.ToString(format)}-{x.Add(consultationTimeSpan).ToString(format)}").ToArray();
+            return allTimeSpanes.Select(x => $"{x:hh\\:mm}-{x.Add(consultationTimeSpan):hh\\:mm}").ToArray();
         }
     }
 }
